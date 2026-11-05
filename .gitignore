@@ -21,3 +21,10 @@ dist/
 
 # Editor
 .vscode/
+
+# Local databases
+*.db
+*.sqlite3
+
+# Python virtual environments
+.venv/
