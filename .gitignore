@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Environment secrets
+.env
+
+# Dataset files
+datasets/*
+!datasets/.gitkeep
+
+# Model weights
+models/*.pt
+models/*.pth
+
+# Frontend
+node_modules/
+dist/
+
+# Editor
+.vscode/
