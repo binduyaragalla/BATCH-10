@@ -1,0 +1,17 @@
+{
+    "project": "NutriVision",
+    "report_date": "2026-11-05 15:18:17",
+    "dataset_file": "..\\datasets\\processed\\food_nutrition_cleaned.csv",
+    "total_records": 5,
+    "total_columns": 7,
+    "missing_values": 0,
+    "duplicate_rows": 0,
+    "food_categories": [
+        "Rice",
+        "Idli",
+        "Dosa",
+        "Banana",
+        "Chapati"
+    ],
+    "validation_status": "Passed"
+}
