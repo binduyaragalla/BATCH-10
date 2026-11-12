@@ -5,22 +5,39 @@ inspector = inspect(engine)
 
 with engine.connect() as connection:
 
-    food_count = connection.execute(
-        text("SELECT COUNT(*) FROM foods")
-    ).scalar()
+    current_records = connection.execute(
+        text("""
+            SELECT food_name, food_state
+            FROM foods
+            ORDER BY food_name, food_state
+        """)
+    ).fetchall()
 
-    backup_count = connection.execute(
-        text("SELECT COUNT(*) FROM foods_backup")
-    ).scalar()
+    backup_records = connection.execute(
+        text("""
+            SELECT food_name, food_state
+            FROM foods_backup
+            ORDER BY food_name, food_state
+        """)
+    ).fetchall()
+
+current_set = set(current_records)
+backup_set = set(backup_records)
+
+missing_records = backup_set - current_set
+additional_records = current_set - backup_set
 
 print("\n--- MIGRATION VERIFICATION ---")
-print("Current food records:", food_count)
-print("Backup food records:", backup_count)
+print("Current food records:", len(current_records))
+print("Backup food records:", len(backup_records))
 
 print("\nUnique constraints:")
 print(inspector.get_unique_constraints("foods"))
 
-if food_count == backup_count:
-    print("\nRecord preservation: PASSED")
+print("\nMissing original records:", missing_records)
+print("Additional records:", additional_records)
+
+if not missing_records:
+    print("\nOriginal record preservation: PASSED")
 else:
-    print("\nRecord preservation: FAILED")
+    print("\nOriginal record preservation: FAILED")

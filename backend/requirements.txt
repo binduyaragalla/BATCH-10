@@ -1,0 +1,16 @@
+fastapi
+uvicorn[standard]
+sqlalchemy
+psycopg2-binary
+pandas
+numpy
+pillow
+opencv-python-headless
+scikit-learn
+python-multipart
+torch
+torchvision
+pwdlib[argon2]
+PyJWT
+APScheduler
+python-dotenv

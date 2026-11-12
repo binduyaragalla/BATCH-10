@@ -28,3 +28,17 @@ dist/
 
 # Python virtual environments
 .venv/
+# NutriVision local backups and model weights
+project_backup/
+backend/project_backup/
+backend/models/*.pth
+backend/models/*.pt
+*_backup.py
+backend/*_backup.py
+
+# Local database and secrets
+backend/*.db
+backend/.env
+
+# Backup files
+*_backup.*
